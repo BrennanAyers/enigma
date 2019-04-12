@@ -13,4 +13,8 @@ class EncryptionEngineTest < Minitest::Test
   def test_it_can_generate_keys
     assert_equal ["12", "23", "34", "45"], @encryption_engine.generate_keys("12345")
   end
+
+  def test_it_can_generate_offset_keys
+    assert_equal ["21", "23", "36", "50"], @encryption_engine.offset("012345", ["12", "23", "34", "45"])
+  end
 end
