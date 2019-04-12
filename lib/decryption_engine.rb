@@ -6,7 +6,7 @@ class DecryptionEngine
     @key = key
     @date = date
     @alphabet = ("a".."z").to_a << " "
-    # @decryption = decrypt(message)
+    @decryption = decrypt(message)
   end
 
   def offset(date, key_array)
@@ -19,13 +19,30 @@ class DecryptionEngine
       (key_int += key_offset).to_s
     end
   end
-  
+
   def generate_keys(key)
     key_array = []
     key_array << key[0..1]
     key_array << key[1..2]
     key_array << key[2..3]
     key_array << key[3..4]
+  end
+
+  private
+
+  def rotated_alphabet(offset_key)
+    @alphabet.rotate(-(offset_key.to_i % 27))
+  end
+
+  def decrypt(message)
+    offset_keys = offset(date, generate_keys(key))
+    encrypted_message = ""
+    @message.split("").each_with_index do |char, index|
+      alphabet = rotated_alphabet(offset_keys[index % 4])
+      alpha_index = @alphabet.find_index(char)
+      encrypted_message += alphabet[alpha_index]
+    end
+    encrypted_message
   end
 
 end
