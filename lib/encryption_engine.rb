@@ -2,16 +2,12 @@ class EncryptionEngine
   attr_reader :encryption, :key, :date
 
   def initialize(message, key, date)
-    # @encryption = encrypt(message)
+    @message = message
     @key = key
     @date = date
-    # @offset = offset(date)
+    @encryption = encrypt(message)
+    @alphabet = ("a".."z").to_a << " "
   end
-
-  # def encrypt(message)
-  #   generate_keys(key)
-  #
-  # end
 
   def offset(date, key_array)
     offsets = date.to_i.abs2.to_s
@@ -31,4 +27,11 @@ class EncryptionEngine
     key_array << key[2..3]
     key_array << key[3..4]
   end
+
+  private
+
+  def rotated_alphabet(offset_key)
+    @alphabet.rotate(offset_key % 27)
+  end
+
 end
