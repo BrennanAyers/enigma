@@ -8,7 +8,7 @@ class EncryptionEngine
     @key = key
     @date = date
     @alphabet = ("a".."z").to_a << " "
-    @encryption = send(message)
+    @encryption = send(message.downcase)
   end
 
   private
