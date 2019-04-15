@@ -3,7 +3,7 @@ class EncryptionEngine
   include EngineModule
   attr_reader :encryption, :key, :date
 
-  def initialize(message, key, date)
+  def initialize(message, key = random_key, date = todays_date)
     @message = message
     @key = key
     @date = date
