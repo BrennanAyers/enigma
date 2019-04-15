@@ -40,8 +40,10 @@ class EngineModuleTest < Minitest::Test
   end
 
   def test_it_will_put_todays_date_if_empty
+    fake_date = Date.new(2001, 2, 3)
+    Date.stubs(today: fake_date)
     dummy = DummyEngine.new("hello world", "09729")
 
-    assert_equal todays_date, dummy.date
+    assert_equal "030201", dummy.date
   end
 end
