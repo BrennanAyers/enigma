@@ -32,10 +32,10 @@ class EngineModuleTest < Minitest::Test
   end
 
   def test_it_can_create_a_random_key
-    srand(12345)
+    # This srand will create a 4 digit key, which we then prepend a 0 on to
+    srand(2231489724)
     dummy = DummyEngine.new("hello world")
 
-    #Unable to tell what the key value will be yet
-    assert_equal 12345, dummy.key
+    assert_equal "09729", dummy.key
   end
 end
