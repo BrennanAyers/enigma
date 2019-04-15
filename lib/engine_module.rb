@@ -39,4 +39,9 @@ module EngineModule
     end
     key
   end
+
+  def todays_date
+    date = Date.today
+    date.strftime("%d%m%y")
+  end
 end
