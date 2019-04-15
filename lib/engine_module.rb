@@ -2,7 +2,7 @@ module EngineModule
 
   def offset_keys
     generate_keys(key).map.with_index do |key, index|
-      key_offset = generate_offsets(@date)[index]
+      key_offset = generate_offsets(date)[index]
       key += key_offset
     end
   end
@@ -22,7 +22,7 @@ module EngineModule
   end
 
   def send(message)
-    @message.split("").map.with_index do |char, index|
+    message.split("").map.with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
       alpha_index = @alphabet.find_index(char)
       alphabet[alpha_index]
