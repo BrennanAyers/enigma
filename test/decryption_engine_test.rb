@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './lib/Decryption_engine'
+require './lib/decryption_engine'
 class DecryptionEngineTest < Minitest::Test
   def setup
     @decryption_engine = DecryptionEngine.new("keder ohulw", "02715",  "040895")
