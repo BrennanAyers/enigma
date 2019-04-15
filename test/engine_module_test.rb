@@ -6,7 +6,7 @@ class DummyEngine
   include EngineModule
   attr_reader :key, :date
 
-  def initialize(message, key = random_key, date = todays_date)
+  def initialize(message, key, date)
     @message = message
     @key = key
     @date = date
@@ -31,19 +31,4 @@ class EngineModuleTest < Minitest::Test
     assert_equal [3, 27, 73, 20], @engine.offset_keys
   end
 
-  def test_it_can_create_a_random_key_if_empty
-    # This srand will create a 4 digit key, which we then prepend a 0 on to
-    srand(2231489724)
-    dummy = DummyEngine.new("hello world")
-
-    assert_equal "09729", dummy.key
-  end
-
-  def test_it_will_put_todays_date_if_empty
-    fake_date = Date.new(2001, 2, 3)
-    Date.stubs(today: fake_date)
-    dummy = DummyEngine.new("hello world", "09729")
-
-    assert_equal "030201", dummy.date
-  end
 end
