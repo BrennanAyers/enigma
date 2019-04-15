@@ -36,13 +36,13 @@ class DecryptionEngine
 
   def decrypt(message)
     offset_keys = offset(date, generate_keys(key))
-    encrypted_message = ""
+    decrypted_message = ""
     @message.split("").each_with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
       alpha_index = @alphabet.find_index(char)
-      encrypted_message += alphabet[alpha_index]
+      decrypted_message += alphabet[alpha_index]
     end
-    encrypted_message
+    decrypted_message
   end
 
 end
