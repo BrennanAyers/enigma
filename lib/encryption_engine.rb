@@ -13,9 +13,8 @@ class EncryptionEngine
     offset_index = -4
     generate_keys(key).map do |key|
       key_offset = generate_offsets(@date)[offset_index].to_i
-      key_int = key.to_i
       offset_index += 1
-      key_int += key_offset
+      key += key_offset
     end
   end
 
