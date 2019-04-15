@@ -40,7 +40,7 @@ class EncryptionEngine
     @message.split("").map.with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
       alpha_index = @alphabet.find_index(char)
-      char = alphabet[alpha_index]
+      alphabet[alpha_index]
     end.join
   end
 
