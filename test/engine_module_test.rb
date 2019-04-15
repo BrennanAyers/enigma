@@ -6,7 +6,7 @@ class DummyEngine
   include EngineModule
   attr_reader :key, :date
 
-  def initialize(message, key = random_key, date = 012345)
+  def initialize(message, key = random_key, date = todays_date)
     @message = message
     @key = key
     @date = date
@@ -42,6 +42,6 @@ class EngineModuleTest < Minitest::Test
   def test_it_will_put_todays_date_if_empty
     dummy = DummyEngine.new("hello world", "09729")
 
-    assert_equal 012345, dummy.date
+    assert_equal todays_date, dummy.date
   end
 end
