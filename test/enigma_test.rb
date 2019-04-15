@@ -24,4 +24,18 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
   end
+
+  def test_it_will_put_todays_date_if_empty
+    fake_date = Date.new(2001, 2, 3)
+    Date.stubs(today: fake_date)
+
+    assert_equal "030201", @enigma.encrypt("hello world", "09729")[:date]
+  end
+
+  def test_it_can_create_a_random_key_if_empty
+    # This srand will create a 4 digit key, which we then prepend a 0 on to
+    srand(2231489724)
+
+    assert_equal "09729", @enigma.encrypt("hello world")[:key]
+  end
 end

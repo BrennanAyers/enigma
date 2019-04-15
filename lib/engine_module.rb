@@ -23,7 +23,7 @@ module EngineModule
 
 
   private
-  
+
   def send(message)
     message.split("").map.with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
@@ -31,5 +31,4 @@ module EngineModule
       alphabet[alpha_index]
     end.join
   end
-
 end
