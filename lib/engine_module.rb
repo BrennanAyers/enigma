@@ -31,17 +31,4 @@ module EngineModule
       alphabet[alpha_index]
     end.join
   end
-
-  def random_key
-    key = rand(1..99999).to_s
-    unless key.length == 5
-      key = "0" + key
-    end
-    key
-  end
-
-  def todays_date
-    date = Date.today
-    date.strftime("%d%m%y")
-  end
 end
