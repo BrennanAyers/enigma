@@ -37,13 +37,11 @@ class EncryptionEngine
   end
 
   def encrypt(message)
-    encrypted_message = ""
-    @message.split("").each_with_index do |char, index|
+    @message.split("").map.with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
       alpha_index = @alphabet.find_index(char)
-      encrypted_message += alphabet[alpha_index]
-    end
-    encrypted_message
+      char = alphabet[alpha_index]
+    end.join
   end
 
 end
