@@ -26,9 +26,13 @@ module EngineModule
 
   def send(message)
     message.split("").map.with_index do |char, index|
-      alphabet = rotated_alphabet(offset_keys[index % 4])
-      alpha_index = @alphabet.find_index(char)
-      alphabet[alpha_index]
+      if @alphabet.include?(char)
+        alphabet = rotated_alphabet(offset_keys[index % 4])
+        alpha_index = @alphabet.find_index(char)
+        alphabet[alpha_index]
+      else
+        char
+      end
     end.join
   end
 end
