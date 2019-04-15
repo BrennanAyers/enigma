@@ -23,7 +23,7 @@ module EngineModule
 
 
   private
-  
+
   def send(message)
     message.split("").map.with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])
@@ -32,4 +32,11 @@ module EngineModule
     end.join
   end
 
+  def random_key
+    key = rand(1..99999).to_s
+    unless key.length == 5
+      key = "0" + key
+    end
+    key
+  end
 end
