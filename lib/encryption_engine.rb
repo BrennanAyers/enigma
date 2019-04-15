@@ -15,7 +15,7 @@ class EncryptionEngine
       key_offset = generate_offsets(@date)[offset_index].to_i
       key_int = key.to_i
       offset_index += 1
-      (key_int += key_offset).to_s
+      key_int += key_offset
     end
   end
 
@@ -27,10 +27,10 @@ class EncryptionEngine
 
   def generate_keys(key)
     key_array = []
-    key_array << key[0..1]
-    key_array << key[1..2]
-    key_array << key[2..3]
-    key_array << key[3..4]
+    key_array << key[0..1].to_i
+    key_array << key[1..2].to_i
+    key_array << key[2..3].to_i
+    key_array << key[3..4].to_i
   end
 
   private
