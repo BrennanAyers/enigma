@@ -39,9 +39,15 @@ class EnigmaTest < Minitest::Test
     assert_equal "09729", @enigma.encrypt("hello world")[:key]
   end
 
-  def test_it_will_downcase_messages
+  def test_it_will_downcase_encrypted_messages
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
 
     assert_equal expected, @enigma.encrypt("HELLO WORLD", "02715", "040895")
+  end
+
+  def test_it_will_downcase_decrypted_messages
+    expected = {decryption: "hello world", key: "02715", date: "040895"}
+
+    assert_equal expected, @enigma.decrypt("KEDER OHULW", "02715", "040895")
   end
 end
