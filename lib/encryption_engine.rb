@@ -9,15 +9,20 @@ class EncryptionEngine
     @encryption = encrypt(message)
   end
 
-  def offset(date, key_array)
-    offsets = date.to_i.abs2.to_s
+  def offset_keys
     offset_index = -4
-    key_array.map do |key|
-      key_offset = offsets[offset_index].to_i
+    generate_keys(key).map do |key|
+      key_offset = generate_offsets(@date)[offset_index].to_i
       key_int = key.to_i
       offset_index += 1
       (key_int += key_offset).to_s
     end
+  end
+
+  def generate_offsets(date)
+    offsets = date.to_i.abs2.to_s
+    last_4 = offsets.split("").last(4)
+    last_4.map(&:to_i)
   end
 
   def generate_keys(key)
@@ -35,7 +40,7 @@ class EncryptionEngine
   end
 
   def encrypt(message)
-    offset_keys = offset(date, generate_keys(key))
+    # offset_keys = offset(date, generate_keys(key))
     encrypted_message = ""
     @message.split("").each_with_index do |char, index|
       alphabet = rotated_alphabet(offset_keys[index % 4])

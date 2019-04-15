@@ -18,6 +18,6 @@ class EncryptionEngineTest < Minitest::Test
   end
 
   def test_it_can_generate_offset_keys
-    assert_equal [3, 27, 73, 21], @encryption_engine.offset_keys
+    assert_equal [3, 27, 73, 20], @encryption_engine.offset_keys
   end
 end
