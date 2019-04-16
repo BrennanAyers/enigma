@@ -32,11 +32,8 @@ module EngineModule
 
   def send(message)
     message.split("").map.with_index do |char, index|
-      if @alphabet.include?(char)
+      next char unless @alphabet.include?(char)
         rotate_char(char, index)
-      else
-        char
-      end
     end.join
   end
 end
