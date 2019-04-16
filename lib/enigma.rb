@@ -1,3 +1,6 @@
+require 'date'
+require './lib/encryption_engine'
+require './lib/decryption_engine'
 class Enigma
   attr_reader :alphabet
 
