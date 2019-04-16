@@ -24,11 +24,16 @@ module EngineModule
 
   private
 
+  def rotate_char(char, index)
+    alphabet = rotated_alphabet(offset_keys[index % 4])
+    alpha_index = @alphabet.find_index(char)
+    alphabet[alpha_index]
+  end
+
   def send(message)
     message.split("").map.with_index do |char, index|
-      alphabet = rotated_alphabet(offset_keys[index % 4])
-      alpha_index = @alphabet.find_index(char)
-      alphabet[alpha_index]
+      next char unless @alphabet.include?(char)
+        rotate_char(char, index)
     end.join
   end
 end
