@@ -26,6 +26,15 @@ class Enigma
     }
   end
 
+  def crack(message, date = todays_date)
+    cracked = Cracker.new(message, date)
+    {
+      decryption: cracked.decryption,
+      key: cracked.key,
+      date: date
+    }
+  end
+
   def random_key
     key = rand(1..99999).to_s
     unless key.length == 5
