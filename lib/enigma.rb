@@ -14,7 +14,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key = random_key, date = todays_date)
+  def decrypt(message, key, date = todays_date)
     decrypted = DecryptionEngine.new(message, key, date)
     {
       decryption: decrypted.decryption,
