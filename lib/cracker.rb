@@ -14,9 +14,13 @@ class Cracker
     last_4 = offsets.split("").last(4)
     last_4.map(&:to_i)
   end
-  
+
   def key_cracker(message, date)
     offsets = generate_offsets(date)
-
+    split_message = message.split("")
+    space_end_message = split_message.last(4)
+    keys = space_end_message.map.with_index do |char, index|
+      find_offset_key(char) - offsets[index]
+    end
   end
 end
