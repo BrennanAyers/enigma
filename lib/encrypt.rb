@@ -9,3 +9,5 @@ encrypted = enigma.encrypt(message)
 
 new_file = File.open("./lib/#{encrypted_file}", "w")
 new_file.write(encrypted[:encryption])
+
+puts "Created '#{encrypted_file}' with the key #{encrypted[:key]} and date #{encrypted[:date]}"
