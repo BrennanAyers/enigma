@@ -7,4 +7,5 @@ enigma = Enigma.new
 
 encrypted = enigma.encrypt(message)
 
-require "pry"; binding.pry
+new_file = File.open("./lib/#{encrypted_file}", "w")
+new_file.write(encrypted[:encryption])
