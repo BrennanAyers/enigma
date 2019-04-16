@@ -56,6 +56,14 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("hello world")
   end
 
+  def test_it_can_decrypt_a_message_without_a_date
+    expected = {decryption: "hello world", key: "02715", date: "030201"}
+    fake_date = Date.new(2001, 2, 3)
+    Date.stubs(today: fake_date)
+
+    assert_equal expected, @enigma.decrypt("jibaqdmdtpu", "02715")
+  end
+
   def test_it_will_downcase_encrypted_messages
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
 
