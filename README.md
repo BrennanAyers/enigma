@@ -1,8 +1,8 @@
-__Functionality:__
+- __Functionality:__
 I believe this is a 3, because while I attempted a cracker/interface, I was not able to implement anything that functioned. My Encrypt and Decrypt and CLI are fully functional.
-__Object Oriented Programming:__
+- __Object Oriented Programming:__
 I believe this is a 3, because I have 3 functioning classes and 1 module, all under 50 lines, and none of my methods are over 7 lines long. My Encrypt and Decrypt classes have the singular goal of Encrypting and Decrypting messages. The Enigma class is only there to send information to one of the Encrypt or Decrypt classes, and return the information in a specific format. My module is the logic that the Encrypt and Decrypt classes use to process their given information. Things like generating keys and offsets are the same between the two, so the Module holds all of that code.
-__Test Driven Development:__
+- __Test Driven Development:__
 I believe this is a 4 because I have 100% coverage in SimpleCov, and I have implemented mocks and stubs in some of those tests. I implemented Mocks in the Engine Module tests by creating a DummyEngine class that I extended the EngineModule onto. This allowed me to test the Modules functionality without feeding in every piece of information from an Enigma machine. I also implemented Stubs on the Enigma test, ensuring that I could use the same Date on tests that required it. I was able to created a Date object, that I could then stub the Date class to use when calling the ::today method. I additionally wrote all my tests, committed them, and then built my methods.
-__Version Control:__
+- __Version Control:__
 I believe this is a 4 because I have over twice the required amount of commits, and 15 PRs. I ensured that all of my PRs covered all aspects of the commits included, and went in depth about how the files and methods interacted and functioned. All of my commits were split into singular functionalities.
